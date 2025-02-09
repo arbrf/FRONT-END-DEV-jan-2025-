@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS Selectors</title>
+        <style>
+            /* Style for all div elements */
+            div {
+                color: green;
+            }
+
+            /* Select only direct child <p> tags of <div> */
+            div > p {
+                color: pink;
+            }
+
+            /* Select all descendant <p> tags of <div> */
+            div p {
+                color: pink;
+            }
+
+            p:first-child {
+
+                background-color:red;
+            }
+            a:hover{
+
+                color: black;
+            }
+            a:visited {
+                color: purple;
+            }
+            a:link{
+                color: red;
+            }
+        </style>  
+    </head>
+    <body>
+        <div class="container">Hi, I am 9 line div ok
+            <article>
+                <p>
+                    I am a child of <article> and a descendant of 9 line div
+                </p>
+            </article>
+        </div>
+        <div class="container">Hi, I am 13 line div
+            <p>
+                I am a direct child of 13 line div
+                <span>
+                    Iam first child  of 36 line p tag
+                </span>
+            </p>
+        </div>
+        <div class="container">Hi, I am 14 line div
+            <br>
+            <a href="http://google.com">Google</a><br>
+            <a href="http://google2.com">Google2</a>
+        </div>
+    </body>
+</html>
