@@ -11,10 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class SalesPersonListComponent {
    salesPersonlist: SalesPerson[]=[  
-    new SalesPerson("John", "Doe", "john@gmail.com",10),
-    new SalesPerson("Murphy", "Law", "murphy@gmail.com",20),
-    new SalesPerson("Trafalgar", "Law", "law@gmail.com",30),
-    new SalesPerson("Zoro", "Roronoa", "robin@gmail.com",3),
+    new SalesPerson("John", "Doe", "john@gmail.com",10000),
+    new SalesPerson("Murphy", "Law", "murphy@gmail.com",20000),
+    new SalesPerson("Trafalgar", "Law", "law@gmail.com",30000),
+    new SalesPerson("Zoro", "Roronoa", "robin@gmail.com",5000),
     
    ];
 
