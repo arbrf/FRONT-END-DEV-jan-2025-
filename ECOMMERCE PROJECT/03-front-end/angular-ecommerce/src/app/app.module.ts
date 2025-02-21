@@ -6,14 +6,13 @@ import { ProductsListComponent } from './components/products-list/products-list.
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductsListComponent
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule  // ✅ Add this
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
