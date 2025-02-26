@@ -1,1 +1,16 @@
-<p>product-details works!</p>
+<div class="detail-section">
+    <div class="container-fluid">
+        <div *ngFor="let item of products"  [style.margin-top.px]="100">
+            <img src="{{item.imageUrl}}" class="detail-img">
+            <h3>{{item.name}}</h3>
+            <div class="price">{{item.unitPrice|currency:'USD'}}</div>
+            <a href="#" class="primary-btn">Add to Cart</a>
+            <hr>
+            <h3>Description</h3>
+            <p>{{item.description}}</p>
+            <a routerLink="/products" class="mt-5">Back to ProductList</a>
+        </div>
+          
+    </div>
+</div>
+

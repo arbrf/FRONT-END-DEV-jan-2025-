@@ -13,7 +13,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 
 const routes: Routes = [
   
-  {path: 'search/:id', component: ProductDetailsComponent},
+  {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},

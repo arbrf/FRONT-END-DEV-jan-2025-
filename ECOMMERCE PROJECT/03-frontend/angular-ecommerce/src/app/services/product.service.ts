@@ -12,12 +12,14 @@ export class ProductService {
   
   
   
+  
+  
 
   private baseUrl = 'http://localhost:8081/api/products';
 
   private categoryUrl = 'http://localhost:8081/api/product-category';
 
-  private searchproductById = `${this.baseUrl}/search/findById?id=`;
+  
 //http://localhost:8081/api/products/search/findById?id=1
   constructor(private httpClient: HttpClient) { }
 
@@ -49,6 +51,13 @@ export class ProductService {
       map(response => response._embedded.products)
     );
   }
+  getProduct(productID: number):Observable<Product[]> {
+    const productUrl = `${this.baseUrl}/search/findById?id=${productID}`;
+    console.log(productUrl);
+    return this.httpClient.get<GetResponseProduct>(productUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
 }
 
 interface GetResponseProducts {
@@ -56,7 +65,11 @@ interface GetResponseProducts {
     products: Product[];
   }
 }
-
+interface GetResponseProduct {
+  _embedded: {
+    products: Product[];
+  }
+}
 interface GetResponseProductCategory {
   _embedded: {
     productCategory: ProductCategory[];
