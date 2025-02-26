@@ -17,6 +17,8 @@ export class ProductService {
 
   private categoryUrl = 'http://localhost:8081/api/product-category';
 
+  private searchproductById = `${this.baseUrl}/search/findById?id=`;
+//http://localhost:8081/api/products/search/findById?id=1
   constructor(private httpClient: HttpClient) { }
 
   getProductList(theCategoryId: number): Observable<Product[]> {
