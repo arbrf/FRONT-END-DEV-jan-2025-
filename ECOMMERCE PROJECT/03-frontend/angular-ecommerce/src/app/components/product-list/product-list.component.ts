@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   previousCategoryId: number=1;
   searchKeyWord:boolean = false;
   thePageNumber:number =1;
-  thePageSize:number =5;
+  thePageSize:number =10;
   theTotalElements:number = 0;
   
   constructor(private productService: ProductService,

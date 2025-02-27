@@ -733,7 +733,10 @@ table.table.table-bordered th{
  * Buttons
  * ----------------------------
  */
-
+.mydiv{
+    transform: translate(-70px, -15px);
+ 
+}
  .btn-info{
     color:#fff;
     background-color:#0da8e4!important;
