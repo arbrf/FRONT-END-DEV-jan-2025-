@@ -15,9 +15,9 @@ export class ProductService {
 
 
 
-  private baseUrl = 'http://localhost:8081/api/products';
+  private baseUrl = 'http://localhost:8080/api/products';
 
-  private categoryUrl = 'http://localhost:8081/api/product-category';
+  private categoryUrl = 'http://localhost:8080/api/product-category';
 
 
   //http://localhost:8081/api/products/search/findById?id=1
@@ -47,10 +47,17 @@ export class ProductService {
   searchProducts(keyword: string): Observable<Product[]> {
     //find by name containing
     const searchbyName = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
-
+    console.log(searchbyName);
     return this.getProducts(searchbyName);
   }
+ searchProductsPaginate(thePage: number, thePageSize: number, keyword: string): Observable<GetResponseProducts> {
 
+     // need to build URL based on category id
+   //  const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}&page=${thePage}&size=${thePageSize}`;
+   const searchbyName = `${this.baseUrl}/search/findByNameContaining?name=${keyword}&page=${thePage}&size=${thePageSize}`;
+     console.log("thePaginate URl  "+searchbyName);
+     return this.httpClient.get<GetResponseProducts>(searchbyName);
+   }
 
   private getProducts(searchbyName: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchbyName).pipe(

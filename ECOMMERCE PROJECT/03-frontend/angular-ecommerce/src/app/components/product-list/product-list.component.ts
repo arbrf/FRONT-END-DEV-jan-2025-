@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   previousCategoryId: number=1;
   searchKeyWord:boolean = false;
   thePageNumber:number =1;
-  thePageSize:number =10;
+  thePageSize:number =5;
   theTotalElements:number = 0;
   
   constructor(private productService: ProductService,
@@ -28,7 +28,9 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
+
   this.searchKeyWord=this.route.snapshot.paramMap.has('keyword');
+  console.log(this.searchKeyWord);
   if(this.searchKeyWord){
       this.handleSearchProducts();
   }
@@ -43,11 +45,20 @@ export class ProductListComponent implements OnInit {
 
 
     console.log(searchkeywords+"product list component ts");
-    this.productService.searchProducts(searchkeywords).subscribe(
+   /* this.productService.searchProducts(searchkeywords).subscribe(
       data => {
         this.products = data;
       }
-    )
+    )*/
+   this.productService.searchProductsPaginate(this.thePageNumber-1,this.thePageSize,searchkeywords)
+       .subscribe(data=>{
+           this.products = data._embedded.products;
+           this.thePageNumber = data.page.number+1;
+           this.thePageSize=data.page.size;
+           this.theTotalElements=data.page.totalElements;
+           console.log(`the current searchkeywords ${searchkeywords} and pageNumber ${this.thePageNumber}
+             the previous categoryID ${this.previousCategoryId} thepagsize ${this.thePageSize}`);
+       });
   }
   handleListProducts(){
      // check if "id" parameter is available
