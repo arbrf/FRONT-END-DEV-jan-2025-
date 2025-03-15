@@ -42,4 +42,47 @@ public class Product {
     @UpdateTimestamp
     private Date lastUpdated;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public int getUnitsInStock() {
+        return unitsInStock;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
 }

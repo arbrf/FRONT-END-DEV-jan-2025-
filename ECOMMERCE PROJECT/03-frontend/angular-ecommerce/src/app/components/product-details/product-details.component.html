@@ -1,16 +1,18 @@
 <div class="detail-section">
     <div class="container-fluid">
-        <div *ngFor="let item of products"  [style.margin-top.px]="100">
-            <img src="{{item.imageUrl}}" class="detail-img">
-            <h3>{{item.name}}</h3>
-            <div class="price">{{item.unitPrice|currency:'USD'}}</div>
-            <a href="#" class="primary-btn">Add to Cart</a>
+        <div *ngIf="product" [style.margin-top.px]="100">
+            <img [src]="product?.imageUrl" class="detail-img">
+            <h3>{{ product?.name }}</h3>
+            <div class="price">{{ product?.unitPrice | currency:'USD' }}</div>
+            <button (click)="addToCart()" class="btn btn-primary btn-sm">Add to Cart</button>
             <hr>
             <h3>Description</h3>
-            <p>{{item.description}}</p>
-            <a routerLink="/products" class="mt-5">Back to ProductList</a>
+            <p>{{ product?.description }}</p>
+            <a routerLink="/products" class="mt-5">Back to Product List</a>
         </div>
-          
+
+
+
     </div>
 </div>
 

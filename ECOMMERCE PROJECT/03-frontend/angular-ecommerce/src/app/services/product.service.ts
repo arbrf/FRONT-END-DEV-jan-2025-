@@ -64,12 +64,15 @@ export class ProductService {
       map(response => response._embedded.products)
     );
   }
-  getProduct(productID: number): Observable<Product[]> {
-    const productUrl = `${this.baseUrl}/search/findById?id=${productID}`;
+  getProduct(productID: number): Observable<Product> {
+    const productUrl = `${this.baseUrl}/${productID}`;
+    //http://localhost:8080/api/products/76
     console.log(productUrl);
+    /*
     return this.httpClient.get<GetResponseProduct>(productUrl).pipe(
       map(response => response._embedded.products)
-    );
+    );*/
+    return this.httpClient.get<Product>(productUrl);
   }
 }
 
@@ -87,7 +90,7 @@ interface GetResponseProducts {
 }
 interface GetResponseProduct {
   _embedded: {
-    products: Product[];
+    products: Product;
   }
 }
 interface GetResponseProductCategory {
