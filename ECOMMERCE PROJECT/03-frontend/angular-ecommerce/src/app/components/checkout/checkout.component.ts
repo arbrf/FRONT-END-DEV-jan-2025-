@@ -17,12 +17,47 @@ export class CheckoutComponent implements OnInit {
         firstName: [''],
         lastName: [''],
         email: ['']
-      })
+      }),
+    shippingAddress: this.formBuilder.group({
+            country: [''],
+            street: [''],
+            state: [''],
+            zipcode: [''],
+            city: ['']
+          }),
+      billingAddress: this.formBuilder.group({
+                  country: [''],
+                  street: [''],
+                  state: [''],
+                  zipcode: [''],
+                  city: ['']
+                }),
+      creditCard: this.formBuilder.group({
+                  cardType: [''],
+                  nameOnCard: [''],
+                  cardNumber: [''],
+                  securitycode: [''],
+                  expirationMonth: ['']
+                })
     });
   }
 
   onSubmit(){
       console.log("Handling Form Submission");
       console.log(this.checkoutFormGroup.get('customer')?.value);
+      console.log("The Email address "+this.checkoutFormGroup.get('customer')?.value.email);
   }
+
+  copyShippingAddressToBillingAddress(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked; // ✅ Correctly extract checkbox state
+
+    if (isChecked) {
+      this.checkoutFormGroup.get('billingAddress')?.setValue(
+        this.checkoutFormGroup.get('shippingAddress')?.value
+      );
+    } else {
+      this.checkoutFormGroup.get('billingAddress')?.reset();
+    }
+  }
+
 }
