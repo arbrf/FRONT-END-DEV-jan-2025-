@@ -46,6 +46,7 @@ totalQuantity:Subject<number>=new Subject<number>();
 
           totalPriceValue+=currentItem.quantity*currentItem.unitPrice;
           totalQuantityValue+=currentItem.quantity;
+
        }
 
    this.totalPrice.next(totalPriceValue);
