@@ -30,4 +30,15 @@ export class CartDetailsComponent implements OnInit {
 
       }
 
+  incrementQuantity(cartItem :CartItem){
+      this.cartServie.addToCart(cartItem);
+      }
+  decrementQuantity(cartItem :CartItem){
+                         this.cartServie.decrementQuantity(cartItem);
+  }
+
+   removeItem(cartItem :CartItem){
+                                     this.cartServie.removeCartItem(cartItem);
+              }
+
 }

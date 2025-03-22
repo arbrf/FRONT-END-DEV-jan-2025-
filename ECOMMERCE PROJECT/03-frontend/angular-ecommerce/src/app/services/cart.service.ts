@@ -49,6 +49,7 @@ totalQuantity:Subject<number>=new Subject<number>();
 
        }
 
+
    this.totalPrice.next(totalPriceValue);
    this.totalQuantity.next(totalQuantityValue);
 
@@ -65,4 +66,25 @@ totalQuantity:Subject<number>=new Subject<number>();
      totalQuantity ${totalQuantityValue}`)
     console.log(`------------------------------------------------`);
    }
+
+   decrementQuantity(theCartItem : CartItem){
+          theCartItem.quantity--;
+          if(theCartItem.quantity==0){
+              this.removeCartItem(theCartItem);
+           }
+          else{
+           this.computeCartTotals();
+           }
+      }
+
+  removeCartItem(theCartItem : CartItem){
+  const itemIndex=this.cartItems.findIndex(tempcartItem=>tempcartItem.id===theCartItem.id);
+  console.log(itemIndex);
+        if(itemIndex>-1){
+        this.cartItems.splice(itemIndex,1);
+
+         this.computeCartTotals();
+      }
+
+ }
 }
