@@ -6,21 +6,30 @@
                 <div formGroupName="customer" class="form-area">
                     <h3>Customer</h3>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="firstName">First Name</label></div>
+                        <div class="col-md-2"><label for="firstName">First
+                                Name</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name">
+                            <input type="text" id="firstName"
+                                formControlName="firstName" class="form-control"
+                                placeholder="First Name">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="lastName">Last Name</label></div>
+                        <div class="col-md-2"><label for="lastName">Last
+                                Name</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Last Name">
+                            <input type="text" id="lastName"
+                                formControlName="lastName" class="form-control"
+                                placeholder="Last Name">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="email">Email</label></div>
+                        <div class="col-md-2"><label
+                                for="email">Email</label></div>
                         <div class="col-md-9">
-                            <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
+                            <input type="email" id="email"
+                                formControlName="email" class="form-control"
+                                placeholder="Email">
                         </div>
                     </div>
                 </div>
@@ -31,7 +40,8 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
-                            <select formControlName="country" class="form-control">
+                            <select formControlName="country"
+                                class="form-control">
                                 <option>Todo</option>
                             </select>
                         </div>
@@ -39,19 +49,23 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Street</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="street" formControlName="street" class="form-control">
+                            <input type="text" id="street"
+                                formControlName="street" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2"><label>City</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="city" formControlName="city" class="form-control">
+                            <input type="text" id="city" formControlName="city"
+                                class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="state">State</label></div>
+                        <div class="col-md-2"><label
+                                for="state">State</label></div>
                         <div class="col-md-9">
-                            <select formControlName="state" class="form-control">
+                            <select formControlName="state"
+                                class="form-control">
                                 <option>Todo</option>
                             </select>
                         </div>
@@ -59,7 +73,8 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Zip Code</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="zipcode" formControlName="zipcode" class="form-control">
+                            <input type="text" id="zipcode"
+                                formControlName="zipcode" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -67,20 +82,24 @@
                 <!-- Checkbox to Copy Shipping to Billing -->
                 <div class="input-space">
 
-                        <input class="form-check-input" type="checkbox" id="sameAddress" (change)="copyShippingAddressToBillingAddress($event)">
-                        <label class="form-check-label" for="sameAddress">
-                            Billing Address same as Shipping Address
-                        </label>
-                   
+                    <input class="form-check-input" type="checkbox"
+                        id="sameAddress"
+                        (change)="copyShippingAddressToBillingAddress($event)">
+                    <label class="form-check-label" for="sameAddress">
+                        Billing Address same as Shipping Address
+                    </label>
+
                 </div>
 
                 <!-- Billing Address -->
                 <div formGroupName="billingAddress" class="form-area">
                     <h3>Billing Address</h3>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="billingCountry">Country</label></div>
+                        <div class="col-md-2"><label
+                                for="billingCountry">Country</label></div>
                         <div class="col-md-9">
-                            <select formControlName="country" class="form-control">
+                            <select formControlName="country"
+                                class="form-control">
                                 <option>Todo</option>
                             </select>
                         </div>
@@ -88,19 +107,23 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Street</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="billingStreet" formControlName="street" class="form-control">
+                            <input type="text" id="billingStreet"
+                                formControlName="street" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2"><label>City</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="billingCity" formControlName="city" class="form-control">
+                            <input type="text" id="billingCity"
+                                formControlName="city" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2"><label for="billingState">State</label></div>
+                        <div class="col-md-2"><label
+                                for="billingState">State</label></div>
                         <div class="col-md-9">
-                            <select formControlName="state" class="form-control">
+                            <select formControlName="state"
+                                class="form-control">
                                 <option>Todo</option>
                             </select>
                         </div>
@@ -108,11 +131,82 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Zip Code</label></div>
                         <div class="col-md-9">
-                            <input type="text" id="billingZipcode" formControlName="zipcode" class="form-control">
+                            <input type="text" id="billingZipcode"
+                                formControlName="zipcode" class="form-control">
                         </div>
                     </div>
                 </div>
+                <!--Credit Card Info-->
+                <div formGroupName="creditCard" class="form-area">
+                    <h3>Credit Card</h3>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label for="cardType">Card
+                                Type</label></div>
+                        <div class="col-md-9">
+                            <select formControlName="cardType"
+                                class="form-select">
+                                <option>Visa</option>
+                                <option>Master Card</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label>Name on Card</label></div>
+                        <div class="col-md-9">
+                            <input type="text" id="nameOnCard"
+                                formControlName="nameOnCard"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label>Card Number</label></div>
+                        <div class="col-md-9">
+                            <input type="text" id="cardNumber"
+                                formControlName="cardNumber"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label>Security Card</label></div>
+                        <div class="col-md-9">
+                            <input type="text" id="securityCode"
+                                formControlName="securityCode"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label
+                                for="expirationMonth">Expiration
+                                Month</label></div>
+                        <div class="col-md-9">
+                            <select formControlName="expirationMonth"
+                                class="form-select">
+                                <option
+                                    *ngFor="let month of creditCardMonths">{{month}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-2"><label
+                                for="expirationYear">Expiration
+                                Year</label></div>
+                        <div class="col-md-9">
+                            <select formControlName="expirationYear"
+                                class="form-select"
+                                (change)="handleMonthsandYears()">
+                                <option *ngFor="let year of creditCardYears"
+                                    [value]="year">{{ year }}</option>
+                            </select>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="form-area">
+                    <h3>Review your Order</h3>
+                    <p>Total Quantity {{totalQuantity}}</p>
+                    <p>Shipping FREE</p>
+                    <p>Total Price {{totalPrice}}</p>
+                </div>
                 <!-- Submit Button -->
                 <div class="text-center mt-3">
                     <button type="submit" class="btn btn-info">Purchase</button>
