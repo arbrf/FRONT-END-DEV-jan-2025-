@@ -1,4 +1,4 @@
-package com.luv2code.ecomm;
+package com.luv2code.ecomm.controller;
 
 import com.luv2code.ecomm.Dao.ProductRepository;
 import com.luv2code.ecomm.Entity.Product;
@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
