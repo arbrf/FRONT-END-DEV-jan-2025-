@@ -40,9 +40,8 @@
                     <div class="row mb-3">
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
-                            <select formControlName="country"
-                                class="form-control">
-                                <option>Todo</option>
+                            <select formControlName="country" class="form-control" (change)="getCountryCode($event, 'shippingAddress')">
+                                <option *ngFor="let country of countries" [ngValue]="country">{{ country.name }}</option>
                             </select>
                         </div>
                     </div>
@@ -66,7 +65,8 @@
                         <div class="col-md-9">
                             <select formControlName="state"
                                 class="form-control">
-                                <option>Todo</option>
+                                <option *ngFor="let state of states"
+                                [ngValue]="state">{{ state.name }}</option>
                             </select>
                         </div>
                     </div>
@@ -98,9 +98,8 @@
                         <div class="col-md-2"><label
                                 for="billingCountry">Country</label></div>
                         <div class="col-md-9">
-                            <select formControlName="country"
-                                class="form-control">
-                                <option>Todo</option>
+                            <select formControlName="country" class="form-control" (change)="getCountryCode($event, 'billingAddress')">
+                                <option *ngFor="let country of countries" [ngValue]="country">{{ country.name }}</option>
                             </select>
                         </div>
                     </div>
@@ -124,7 +123,8 @@
                         <div class="col-md-9">
                             <select formControlName="state"
                                 class="form-control">
-                                <option>Todo</option>
+                                <option *ngFor="let state of states"
+                                [ngValue]="state">{{ state.name }}</option>
                             </select>
                         </div>
                     </div>
