@@ -21,4 +21,8 @@ public class Address {
     private String country;
     @Column(name="zip_code")
     private String zipcode;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Order order;
 }

@@ -21,7 +21,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "order_tracking_number")
@@ -40,6 +40,19 @@ public class Order {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date dateLastUpdated;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipping_address_id",referencedColumnName = "id")
+    private Address shippingAddress;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billing_address_id",referencedColumnName = "id")
+    private  Address billingAddress;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private Set<OrderItem> orderItems = new HashSet<>();
 
