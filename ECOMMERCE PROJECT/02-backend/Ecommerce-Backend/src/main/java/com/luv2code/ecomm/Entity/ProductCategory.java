@@ -3,6 +3,7 @@ package com.luv2code.ecomm.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Table(name="product_category")
 @Getter
 @Setter
+@AllArgsConstructor
 public class ProductCategory {
 
      @Id

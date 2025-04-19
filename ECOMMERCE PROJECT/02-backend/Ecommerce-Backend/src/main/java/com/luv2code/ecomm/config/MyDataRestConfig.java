@@ -10,7 +10,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        // ✅ Expose entity IDs
+        // ✅ Expose Entity IDs
         config.exposeIdsFor(
                 com.luv2code.ecomm.Entity.Product.class,
                 com.luv2code.ecomm.Entity.ProductCategory.class

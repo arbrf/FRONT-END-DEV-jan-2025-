@@ -1,7 +1,7 @@
 package com.luv2code.ecomm.Dao;
 
 
-import com.luv2code.ecomm.entity.Country;
+import com.luv2code.ecomm.Entity.Country;
 import com.luv2code.ecomm.projection.CountryProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

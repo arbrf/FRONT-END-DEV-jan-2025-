@@ -9,11 +9,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
 @Table(name = "state")
 @Data
+@AllArgsConstructor
 public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +25,5 @@ public class State {
 
     @ManyToOne
     @JoinColumn(name = "country_id", nullable = false)
-    private com.luv2code.ecomm.entity.Country country;
+    private com.luv2code.ecomm.Entity.Country country;
 }

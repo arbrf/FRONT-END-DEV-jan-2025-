@@ -1,6 +1,7 @@
 package com.luv2code.ecomm.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "product")
 @Data
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
