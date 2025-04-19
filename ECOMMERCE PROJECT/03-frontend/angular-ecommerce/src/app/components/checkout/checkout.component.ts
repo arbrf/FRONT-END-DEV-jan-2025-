@@ -8,6 +8,11 @@ import { CartService } from 'src/app/services/cart.service';
 
 
 import { Luv2ShopFormService } from 'src/app/services/luv2-shop-form.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
+import { Router } from '@angular/router';
+import { OrderItem } from 'src/app/common/order-item';
+import { Purchase } from 'src/app/common/Purchase';
+import { Order } from 'src/app/common/order';
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +29,10 @@ export class CheckoutComponent implements OnInit {
   states: State[] = [];
 
   constructor(private formBuilder: FormBuilder, private cartService: CartService,
-      private luv2shopService: Luv2ShopFormService) { }
+      private luv2shopService: Luv2ShopFormService,
+      
+      private checkoutService: CheckoutService,
+      private router:Router) { }
 
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
@@ -129,22 +137,85 @@ export class CheckoutComponent implements OnInit {
     });
 
     this.luv2shopService.getCountries().subscribe(data => this.countries = data);
+    
 
 
-
+  
   }
 
   onSubmit(): void {
 
-      if(this.checkoutFormGroup.invalid){
-          this.checkoutFormGroup.markAllAsTouched();
-      }
+    // 1. Validate the form
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();
+      return;
+    }
+  
     console.log("Handling Form Submission");
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log(this.checkoutFormGroup.get('shippingAddress')?.value.country.name);
-    
     console.log("The Email address: " + this.checkoutFormGroup.get('customer')?.value.email);
+  
+    // 2. Set up order
+    const cartItems = this.cartService.cartItems;
+  
+    // Short way to map cart items to order items
+    let orderItems: OrderItem[] = cartItems.map(item => new OrderItem(item));
+  
+    let purchase = new Purchase();
+  
+    // 3. Customer
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+  
+    // 4. Shipping Address
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+  
+    const shippingState: State = this.checkoutFormGroup.controls['shippingAddress'].value.state;
+    const shippingCountry: Country = this.checkoutFormGroup.controls['shippingAddress'].value.country;
+  
+    purchase.shippingAddress.state = shippingState.name;
+    purchase.shippingAddress.country = shippingCountry.name;
+  
+    // 5. Billing Address
+    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+  
+    const billingState: State = this.checkoutFormGroup.controls['billingAddress'].value.state;
+    const billingCountry: Country = this.checkoutFormGroup.controls['billingAddress'].value.country;
+  
+    purchase.billingAddress.state = billingState.name;
+    purchase.billingAddress.country = billingCountry.name;
+  
+    // 6. Order Info
+    let order = new Order();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
+  
+    purchase.order = order;
+    purchase.orderItems = orderItems;
+  
+    // 7. Call REST API via CheckoutService
+    this.checkoutService.placeOrder(purchase).subscribe({
+      next: response => {
+        alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
+  
+        // reset form
+        this.reset();
+      },
+      error: err => {
+        alert(`There was an error: ${err.message}`);
+      }
+    });
+  }
+  
 
+  private reset() {
+    this.checkoutFormGroup.reset();
+    this.cartService.cartItems = [];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+
+    // navigate to product page or home
+    this.router.navigateByUrl("/products");
   }
 
   copyShippingAddressToBillingAddress(event: Event): void {
