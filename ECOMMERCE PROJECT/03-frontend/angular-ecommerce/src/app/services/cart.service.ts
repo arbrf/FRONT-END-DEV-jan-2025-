@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CartItem} from '../common/cart-item';
 import {Subject,ReplaySubject,BehaviorSubject} from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,9 +9,28 @@ export class CartService {
 cartItems : CartItem[]=[];
 totalPrice:Subject<number>=new BehaviorSubject<number>(0);
 totalQuantity:Subject<number>=new BehaviorSubject<number>(0);
+// storage: Storage=sessionStorage;
+storage: Storage=localStorage;
+
+ constructor() {
+   // Read data from storage
+   const data = this.storage.getItem('cartItems');
+
+   if (data) {
+     try {
+       const parsedData = JSON.parse(data) as CartItem[];
+       this.cartItems = parsedData;
+       this.computeCartTotals();
+     } catch (e) {
+       console.error('Failed to parse cartItems from localStorage', e);
+     }
+   }
+ }
 
 
-  constructor() { }
+
+
+
   addToCart(theCartItem : CartItem){
       //check if the cartitem exists
       let alreadyExisitinCart:boolean=false;
@@ -54,6 +74,7 @@ totalQuantity:Subject<number>=new BehaviorSubject<number>(0);
    this.totalQuantity.next(totalQuantityValue);
 
    this.logCartData(totalPriceValue,totalQuantityValue);
+   this.persistCartItems();
   }
   logCartData(totalPriceValue:number,totalQuantityValue:number){
       console.log(`logging cart items`);
@@ -87,4 +108,8 @@ totalQuantity:Subject<number>=new BehaviorSubject<number>(0);
       }
 
  }
+
+ persistCartItems(){
+   this.storage.setItem('cartItems',JSON.stringify(this.cartItems));
+}
 }

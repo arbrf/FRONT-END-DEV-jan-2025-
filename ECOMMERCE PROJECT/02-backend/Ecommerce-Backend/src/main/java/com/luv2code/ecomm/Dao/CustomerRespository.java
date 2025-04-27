@@ -8,8 +8,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@RepositoryRestResource(collectionResourceRel = "customer", path = "customer",excerptProjection = CustomerProjection.class)
-@CrossOrigin("http://localhost:4200/")
+//@RepositoryRestResource(collectionResourceRel = "customer", path = "customer",excerptProjection = CustomerProjection.class)
+
 @Repository
 public interface CustomerRespository extends JpaRepository<Customer,Long> {
+    Customer findByEmail(String email);
 }

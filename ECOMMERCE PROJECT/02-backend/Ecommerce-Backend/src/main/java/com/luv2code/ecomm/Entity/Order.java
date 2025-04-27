@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Order {
 
-    public Order(){
+    public Order() {
 
     }
 
@@ -53,7 +53,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    
 
 
     @OneToOne(cascade = CascadeType.ALL)

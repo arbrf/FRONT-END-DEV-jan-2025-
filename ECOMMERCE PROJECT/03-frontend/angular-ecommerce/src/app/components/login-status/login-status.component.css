@@ -1,33 +1,44 @@
-.security-btn{
-    position:relative;
-    right:0;
-    min-width:95px;
-    color:#fff;
-    border:10px solid #205b8d;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:43px;
-    background:#205b8d
-}
-.login-status-header{
-    -webkit-box-pack:center;
-    -webkit-justify-content:center;
-    -moz-box-pack:center;
-    -ms-flex-pack:center;
-    justify-content:center
+.security-btn {
+    position: relative;
+    right: 0;
+    min-width: 95px;
+    color: #fff;
+    border: 10px solid #205b8d;
+    border-radius: 43px;
+    background: #205b8d;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.login-status-user-info{
-    line-height:43px;
-    border:1px solid #e5e5e5;
-    
-    color:#666;
-    padding:0 17px;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
-    -webkit-transition:all .5s ease;
-    -o-transition:all .5s ease;
-    -moz-transition:all .5s ease;
-    transition:all .5s ease
+.security-btn:hover {
+    background-color: #003f66;
+    border-color: #003f66;
+}
+
+.login-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align buttons to right */
+    flex-wrap: wrap;
+    gap: 10px; /* Add space between buttons */
+    padding: 10px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between buttons */
+}
+
+.login-status-user-info {
+    line-height: 43px;
+    border: 1px solid #e5e5e5;
+    color: #666;
+    padding: 0 17px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: auto; /* Push username to the left */
 }

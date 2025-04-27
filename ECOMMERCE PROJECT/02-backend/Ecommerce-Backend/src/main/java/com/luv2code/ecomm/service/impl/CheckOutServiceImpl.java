@@ -45,7 +45,16 @@ public class CheckOutServiceImpl implements CheckOutService {
 //
 //                Plays nicely with Hibernate’s dirty checking.
 
-        Customer customer = purchase.getCustomer();
+        String email=purchase.getCustomer().getEmail();
+        Customer existingCustomer=customerRespository.findByEmail(email);
+Customer customer=new Customer();
+       if(existingCustomer!=null){
+           customer=existingCustomer;
+       }
+       else {
+           customer = purchase.getCustomer();
+       }
+
         customer.add(order);
 
         System.out.println(customer.getFirstName());
