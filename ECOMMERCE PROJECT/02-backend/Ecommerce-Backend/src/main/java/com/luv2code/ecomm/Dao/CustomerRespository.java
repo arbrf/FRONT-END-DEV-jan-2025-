@@ -13,4 +13,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Repository
 public interface CustomerRespository extends JpaRepository<Customer,Long> {
     Customer findByEmail(String email);
+
 }
