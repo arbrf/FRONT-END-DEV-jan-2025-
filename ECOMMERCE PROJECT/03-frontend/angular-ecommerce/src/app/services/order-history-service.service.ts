@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { OrderHistory } from '../common/order-history';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,10 @@ import { OrderHistory } from '../common/order-history';
 export class OrderHistoryService {
 
   storage: Storage = sessionStorage;
-  private orderUrl = 'http://localhost:8080/api/order';
-  private authUrl = 'http://localhost:8080/api/authenticate';
+   private orderUrl=environment.luv2ShopApiIrl+"order";
+//  private orderUrl = 'http://localhost:8080/api/order';
+   private authUrl = environment.luv2ShopApiIrl+"authenticate";
+ // private authUrl = 'http://localhost:8080/api/authenticate';
 
   constructor(private httpClient: HttpClient) { }
 
