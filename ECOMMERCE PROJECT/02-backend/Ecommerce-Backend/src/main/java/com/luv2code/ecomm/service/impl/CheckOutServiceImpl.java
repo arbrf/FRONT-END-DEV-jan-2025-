@@ -26,7 +26,7 @@ public class CheckOutServiceImpl implements CheckOutService {
 
     private String stripeSecretKey;
 
-    public CheckOutServiceImpl(CustomerRespository customerRespository,@Value("${stripe.key.secret}") String stripeSecretKey) {
+    public CheckOutServiceImpl(CustomerRespository customerRespository,/*@Value("${stripe.key.secret}")*/ String stripeSecretKey) {
         this.customerRespository = customerRespository;
         this.stripeSecretKey = stripeSecretKey;
         Stripe.apiKey=stripeSecretKey;
