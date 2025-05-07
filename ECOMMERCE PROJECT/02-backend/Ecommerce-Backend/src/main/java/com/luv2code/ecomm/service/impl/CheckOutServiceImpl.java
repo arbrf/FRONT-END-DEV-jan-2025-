@@ -4,22 +4,33 @@ import com.luv2code.ecomm.Dao.CustomerRespository;
 import com.luv2code.ecomm.Entity.Customer;
 import com.luv2code.ecomm.Entity.Order;
 import com.luv2code.ecomm.Entity.OrderItem;
+import com.luv2code.ecomm.dto.PaymentInfoDTO;
 import com.luv2code.ecomm.dto.Purchase;
 import com.luv2code.ecomm.dto.PurchaseResponse;
 import com.luv2code.ecomm.projection.CustomerProjection;
 import com.luv2code.ecomm.service.CheckOutService;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CheckOutServiceImpl implements CheckOutService {
     @Autowired
     private CustomerRespository customerRespository;
+
+    private String stripeSecretKey;
+
+    public CheckOutServiceImpl(CustomerRespository customerRespository,@Value("${stripe.key.secret}") String stripeSecretKey) {
+        this.customerRespository = customerRespository;
+        this.stripeSecretKey = stripeSecretKey;
+        Stripe.apiKey=stripeSecretKey;
+    }
 
     @Override
     @Transactional
@@ -64,6 +75,16 @@ Customer customer=new Customer();
 
 
         return new PurchaseResponse(trackingNumber);
+    }
+
+    @Override
+    public PaymentIntent createPaymentIntent(PaymentInfoDTO paymentInfoDTO) throws StripeException {
+        List<String>  paymentMethodTypes=new ArrayList<>();
+        Map<String,Object> params= new Hashtable<>();
+        params.put("amount", paymentInfoDTO.getAmount());
+        params.put("currency",paymentInfoDTO.getCurrency());
+        params.put("payment_method_types",paymentMethodTypes);
+        return PaymentIntent.create(params);
     }
 
     private String generateTrackingNumber() {
