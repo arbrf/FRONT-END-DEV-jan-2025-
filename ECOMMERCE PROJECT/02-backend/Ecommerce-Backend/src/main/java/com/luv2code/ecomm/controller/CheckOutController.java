@@ -28,7 +28,8 @@ public class CheckOutController {
     }
    @PostMapping("/payment-intent")
     public ResponseEntity<String> placeOrder(@RequestBody PaymentInfoDTO paymentInfoDTO) throws StripeException {
-        System.out.println(paymentInfoDTO);
+        System.out.println(paymentInfoDTO.getAmount()+"the amount is");
+
 
         PaymentIntent response = checkOutService.createPaymentIntent(paymentInfoDTO);
         String json = response.toJson();

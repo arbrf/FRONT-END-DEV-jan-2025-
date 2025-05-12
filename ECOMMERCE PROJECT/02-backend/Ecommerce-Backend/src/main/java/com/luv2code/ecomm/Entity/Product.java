@@ -44,6 +44,10 @@ public class Product {
     @UpdateTimestamp
     private Date lastUpdated;
 
+    Product(){
+
+    }
+
     public Long getId() {
         return id;
     }

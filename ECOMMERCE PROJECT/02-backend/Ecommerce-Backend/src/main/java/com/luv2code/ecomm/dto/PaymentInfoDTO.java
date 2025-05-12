@@ -4,9 +4,20 @@ public class PaymentInfoDTO {
     private int amount;
     private String currency;
 
-    public PaymentInfoDTO(int amount, String currency) {
+    private String recieptEmail;
+
+    public String getRecieptEmail() {
+        return recieptEmail;
+    }
+
+    public void setRecieptEmail(String recieptEmail) {
+        this.recieptEmail = recieptEmail;
+    }
+
+    public PaymentInfoDTO(int amount, String currency, String recieptEmail) {
         this.amount = amount;
         this.currency = currency;
+        this.recieptEmail=recieptEmail;
     }
 
     public int getAmount() {

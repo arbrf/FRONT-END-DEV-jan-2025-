@@ -17,6 +17,10 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 public class ProductCategory {
+    
+    ProductCategory(){
+
+    }
 
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -80,10 +80,12 @@ Customer customer=new Customer();
     @Override
     public PaymentIntent createPaymentIntent(PaymentInfoDTO paymentInfoDTO) throws StripeException {
         List<String>  paymentMethodTypes=new ArrayList<>();
+        paymentMethodTypes.add("card");
         Map<String,Object> params= new Hashtable<>();
         params.put("amount", paymentInfoDTO.getAmount());
         params.put("currency",paymentInfoDTO.getCurrency());
         params.put("payment_method_types",paymentMethodTypes);
+        params.put("receipt_email",paymentInfoDTO.getRecieptEmail());
         return PaymentIntent.create(params);
     }
 
